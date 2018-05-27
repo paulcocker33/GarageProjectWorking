@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Controller_Type(models.Model):
     name = models.CharField(max_length=30)
+    device_path = models.TextField()
 
 class Door_Controller(models.Model):
     name = models.TextField(blank=False)
@@ -12,13 +13,14 @@ class Door_Controller(models.Model):
     city = models.TextField(blank=True, null=True)
     uniqueID = models.CharField(max_length=20,blank=False, null=False)
     device_Online = models.BooleanField
-    create_date = models.DateTimeField('date added')
+    create_date = models.DateTimeField(auto_now_add = True)
+    ip_address = models.TextField()
+    device_port = models.IntegerField()
     controller_type = models.ForeignKey(Controller_Type, on_delete=models.CASCADE)
-
 
 class Garage_User(models.Model):
     name = models.TextField()
     email_address = models.TextField(blank=False, null=False)
     password = models.CharField(max_length=20,blank=False, null=False)
     registered_devices= [models.ForeignKey(Door_Controller, on_delete=models.CASCADE)]
-    create_date = models.DateTimeField('date added')
+    create_date = models.DateTimeField(auto_now_add=True)

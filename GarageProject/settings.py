@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'GarageProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'MyDatabase'),
+        'NAME': os.path.join(BASE_DIR, 'GarageDB'),
     }
 }
 
