@@ -39,7 +39,7 @@
         <tr>
             <td><a href="/doors/controllers/{{ controller.id }}/">{{ controller.id }}</a></td>
             <td>{{ controller.controller_type }}</td>
-            <td>{{ controller.owner }}</td>
+            <td><a href="/doors/users/{{ controller.device_owner_id }}">{{ controller.device_owner.first_name }} {{ controller.device_owner.last_name }}</td>
             <td>{{ controller.name }}</td>
             <td>{{ controller.ip_address }}</td>
             <td>{{ controller.device_Online }}</td>

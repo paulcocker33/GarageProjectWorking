@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'GarageControllerApp.apps.GaragecontrollerappConfig',
-    'bootstrap3'
+    'bootstrap3',
+    'ipware',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'GarageProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'GarageDB'),
+        'NAME': os.path.join(BASE_DIR, 'RandoDB'),
     }
 }
 

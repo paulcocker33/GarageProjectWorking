@@ -29,16 +29,19 @@
         <th>ID</th>
         <th>Name</th>
         <th>E-mail Address</th>
-        <th>Phone Number</th>
-        <th>Controller Name</th>
+        <th>Controllers</th>
     </tr>
     {% for user in latest_user_list %}
     <tr>
         <td><a href="/doors/users/{{ user.id }}/">{{ user.id }}</a></td>
         <td>{{ user.first_name }} {{ user.last_name }}</td>
-        <td>{{ user.email_address }}</td>
-        <td>{{ user.phone_number }}</td>
-        <td><a href="/doors/controllers/{{ user.registered_devices.id }}/">{{ user.registered_devices }}</a></td>
+        <td>{{ user.email}}</td>
+        <td>
+            {% for controller in user.door_controller_set.all %}
+            <a href="/doors/controllers/{{ controller.id }}/">{{ controller.name }}</a>
+                <br />
+            {% endfor %}
+        </td>
     </tr>
     {% endfor %}
     </table>

@@ -13,4 +13,7 @@ urlpatterns = [
     path('controllers/', views.controllers, name='controllers'),
     #specific controllers
     path('controllers/<int:controller_id>/', views.specific_controller, name='specific_controller'),
+    #device keepalive
+    path('controllers/register/<str:controller_uniqueid>/', views.register_controller, name='register_controller'),
+    #
 ]
