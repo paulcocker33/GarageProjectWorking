@@ -15,11 +15,11 @@ class Door_Controller(models.Model):
     locality = models.TextField(blank=True, null=True)
     city = models.TextField(blank=True, null=True)
     uniqueID = models.CharField(max_length=20,blank=False, null=False)
-    device_Online = models.BooleanField
+    device_Online = models.BooleanField(default=False)
     create_date = models.DateTimeField(auto_now_add = True)
     ip_address = models.TextField()
     device_port = models.IntegerField()
-    controller_type = models.ForeignKey(Controller_Type, on_delete=models.CASCADE)
+    controller_type = models.ForeignKey(Controller_Type, on_delete=models.CASCADE, related_name='owner')
     def __str__(self):
         return self.name
 

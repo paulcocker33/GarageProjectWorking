@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User List</title>
+    <title>User Page</title>
     <style>
         h1 {text-align: center;}
         ul {
@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<h1>This is the User List</h1>
+<h1>User Page</h1>
 {% if latest_user_list %}
     <ul>
         {% for user in latest_user_list %}
@@ -19,7 +19,7 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>No Users are available</p>
+    <p>User(s) unavailable</p>
 {% endif %}
 </body>
 </html>

@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Controller Page</title>
+    <style>
+        h1 {text-align: center;}
+        ul {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+<body>
+<h1>Controller Page</h1>
+{% if latest_controller_list %}
+    <table>
+    <caption>Controller Information</caption>
+    <tr>
+        <th>Controller ID</th>
+        <th>Controller Type</th>
+        <th>Controller Owner</th>
+        <th>Controller Name</th>
+        <th>Controller IP_Address</th>
+        <th>Controller Active</th>
+        <th>Controller Address</th>
+        <th>Controller Access</th>
+    </tr>
+    {% for controller in latest_controller_list %}
+        <tr>
+        <td>{{ controller.id }}</td>
+        <td>{{ controller.controller_type }}</td>
+        <td>{{ controller.owner }}</td>
+        <td>{{ controller.name }}</td>
+        <td>{{ controller.ip_address }}</td>
+        <td>{{ controller.device_Online }}</td>
+        <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
+        <td><button onclick="window.location.href='{{ controller.ip_address }}:{{ controller.device_port }}';">Link</button></td>
+        </tr>
+    {% endfor %}
 
+    </table>
+{% else %}
+    <p>No controller(s) are available</p>
+{% endif %}
+</body>
 </body>
 </html>
+
+
+
+{#    <ul>#}
+{#        {% for controller in latest_controller_list %}#}
+{#            <li><a href="{{ controller.id }}">{{ controller.controller_type }}</a> {{ controller.name}} {{ controller.uniqueID }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
