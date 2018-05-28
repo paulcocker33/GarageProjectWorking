@@ -26,8 +26,7 @@ SECRET_KEY = 'v#hw%5bx$iz!hn3v514hv*93itxj$yjn77h*qlb^vogy#lj$&$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-STATIC_URL = '/static/'
+ALLOWED_HOSTS = ['ec2-34-215-215-148.us-west-2.compute.amazonaws.com', ['ec2-34-219-29-189.us-west-2.compute.amazonaws.com']]
 
 # Application definition
 
@@ -84,7 +83,7 @@ DATABASES = {
         'NAME': 'AWS_DB',
         'USER': 'remoteuser',
         'PASSWORD': '1qaz!QAZ',
-        'HOST':'34.215.215.148',
+        'HOST':'ip-172-31-29-11.us-west-2.compute.internal',
         'PORT':'3306',
     }
 }
@@ -127,3 +126,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+BOOTSTRAP3 = {
+    'set_required': False,  # For Django <= 1.8 only
+    'error_css_class': 'bootstrap3-error',
+    'required_css_class': 'bootstrap3-required',
+    'javascript_in_head': True,
+}
