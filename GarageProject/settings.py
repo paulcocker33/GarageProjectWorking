@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'GarageProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'RandoDB'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'AWS_DB',
+        'USER': 'remoteuser',
+        'PASSWORD': '1qaz!QAZ',
+        'HOST':'34.215.215.148',
+        'PORT':'3306',
     }
 }
 
