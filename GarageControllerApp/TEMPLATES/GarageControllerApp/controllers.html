@@ -1,7 +1,16 @@
 <!DOCTYPE html>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Controller Page</title>
     <style>
         h1 {text-align: center;}
@@ -14,7 +23,7 @@
 <body>
 <h1>Controller Page</h1>
 {% if latest_controller_list %}
-    <table>
+    <table class="table table-striped">
     <caption>Controller Information</caption>
     <tr>
         <th>Controller ID</th>
@@ -28,14 +37,14 @@
     </tr>
     {% for controller in latest_controller_list %}
         <tr>
-        <td>{{ controller.id }}</td>
+        <td><a href="/doors/controllers/{{ controller.id }}/">{{ controller.id }}</td>
         <td>{{ controller.controller_type }}</td>
         <td>{{ controller.owner }}</td>
         <td>{{ controller.name }}</td>
         <td>{{ controller.ip_address }}</td>
         <td>{{ controller.device_Online }}</td>
         <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
-        <td><button onclick="window.location.href='{{ controller.ip_address }}:{{ controller.device_port }}';">Link</button></td>
+        <td><button onclick="window.location.href='http://{{ controller.ip_address }}:{{ controller.device_port }}';" target="_blank">Link</button></td>
         </tr>
     {% endfor %}
 
@@ -46,11 +55,3 @@
 </body>
 </body>
 </html>
-
-
-
-{#    <ul>#}
-{#        {% for controller in latest_controller_list %}#}
-{#            <li><a href="{{ controller.id }}">{{ controller.controller_type }}</a> {{ controller.name}} {{ controller.uniqueID }}</li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
