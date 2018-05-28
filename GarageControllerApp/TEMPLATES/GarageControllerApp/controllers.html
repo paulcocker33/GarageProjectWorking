@@ -37,20 +37,26 @@
     </tr>
     {% for controller in latest_controller_list %}
         <tr>
-        <td><a href="/doors/controllers/{{ controller.id }}/">{{ controller.id }}</td>
-        <td>{{ controller.controller_type }}</td>
-        <td>{{ controller.owner }}</td>
-        <td>{{ controller.name }}</td>
-        <td>{{ controller.ip_address }}</td>
-        <td>{{ controller.device_Online }}</td>
-        <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
-        <td><button onclick="window.location.href='http://{{ controller.ip_address }}:{{ controller.device_port }}';" target="_blank">Link</button></td>
+            <td><a href="/doors/controllers/{{ controller.id }}/">{{ controller.id }}</a></td>
+            <td>{{ controller.controller_type }}</td>
+            <td>{{ controller.owner }}</td>
+            <td>{{ controller.name }}</td>
+            <td>{{ controller.ip_address }}</td>
+            <td>{{ controller.device_Online }}</td>
+            <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
+            <td><button onclick="window.location.href='http://{{ controller.ip_address }}:{{ controller.device_port }}';" target="_blank">Trigger!</button></td>
         </tr>
     {% endfor %}
-
     </table>
+    <div class="alert alert-success alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Controllers Listed Successfully!
+  </div>
 {% else %}
-    <p>No controller(s) are available</p>
+    <div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> No Controllers were Found!
+    </div>
 {% endif %}
 </body>
 </body>

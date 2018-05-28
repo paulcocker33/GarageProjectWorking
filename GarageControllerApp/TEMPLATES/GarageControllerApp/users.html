@@ -23,13 +23,34 @@
 <body>
 <h1>User Page</h1>
 {% if latest_user_list %}
-    <ul>
-        {% for user in latest_user_list %}
-            <li><a href="{{ user.id }}">{{ user.email_address }}</a> {{ user.first_name}} {{ user.middle_name }}</li>
-        {% endfor %}
-    </ul>
+    <table class="table table-striped">
+    <caption>User Information</caption>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>E-mail Address</th>
+        <th>Phone Number</th>
+        <th>Controller Name</th>
+    </tr>
+    {% for user in latest_user_list %}
+    <tr>
+        <td><a href="/doors/users/{{ user.id }}/">{{ user.id }}</a></td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
+        <td>{{ user.email_address }}</td>
+        <td>{{ user.phone_number }}</td>
+        <td><a href="/doors/controllers/{{ user.registered_devices.id }}/">{{ user.registered_devices }}</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+<div class="alert alert-success alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Users Listed Successfully!
+  </div>
 {% else %}
-    <p>User(s) unavailable</p>
+    <div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> No Users were Found!
+    </div>
 {% endif %}
 </body>
 </html>
