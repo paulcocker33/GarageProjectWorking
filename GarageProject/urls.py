@@ -19,5 +19,4 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('doors/', include('GarageControllerApp.urls')),
-    path('', include('GarageControllerApp.urls'))
 ]
