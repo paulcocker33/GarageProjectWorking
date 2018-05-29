@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'GarageControllerApp.apps.GaragecontrollerappConfig',
     'bootstrap3',
     'ipware',
+    'accounts',
 ]
 
 MIDDLEWARE = [
