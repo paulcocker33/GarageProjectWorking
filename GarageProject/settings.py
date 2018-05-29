@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'v#hw%5bx$iz!hn3v514hv*93itxj$yjn77h*qlb^vogy#lj$&$')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v#hw%5bx$iz!hn3v514hv*93itxj$yjn77h*qlb^vogy#lj$&$'
+#SECRET_KEY = 'v#hw%5bx$iz!hn3v514hv*93itxj$yjn77h*qlb^vogy#lj$&$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['ec2-34-215-215-148.us-west-2.compute.amazonaws.com', ['ec2-34-219-29-189.us-west-2.compute.amazonaws.com']]
 
