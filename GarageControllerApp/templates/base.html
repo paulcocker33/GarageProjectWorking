@@ -12,15 +12,13 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Log On Page</title>
+  <meta charset="utf-8">
+  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
 </head>
 <body>
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
 </body>
 </html>

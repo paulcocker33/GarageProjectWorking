@@ -3,8 +3,6 @@ from . import views
 
 app_name = 'GarageControllerApp'
 urlpatterns = [
-    #index
-    path('', views.index, name='index'),
     #all users
     path('users/', views.users, name='users'),
     #specific users

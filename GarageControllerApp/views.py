@@ -63,6 +63,4 @@ def register_controller(request, controller_uniqueid):
     context = {'latest_controller_list': [controller]}
     return render(request, 'GarageControllerApp/controllers.html', context)
 
-def index(request):
-    return render(request, 'GarageControllerApp/welcome.html')
 

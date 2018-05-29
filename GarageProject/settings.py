@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #SECRET_KEY = 'v#hw%5bx$iz!hn3v514hv*93itxj$yjn77h*qlb^vogy#lj$&$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '34.219.29.189',
@@ -130,7 +130,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/ubuntu/pyproject/GarageControllerApp/static'
-LOGIN_REDIRECT_URL='/doors/users/'
+LOGIN_REDIRECT_URL='home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 BOOTSTRAP3 = {
