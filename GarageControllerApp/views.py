@@ -82,13 +82,14 @@ def add_controller(request):
 @login_required
 def trigger_controller(request, controller_id):
     new_controller = Door_Controller.objects.get(id=controller_id)
-    url = 'www.google.com'
-    delta = datetime.now() - new_controller.last_online
-    if (new_controller.device_Online == 1) & (delta <= 360):
+    url = 'http://' + new_controller.ip_address + ':' + str(new_controller.device_port) + new_controller.controller_type.device_path
+    if new_controller.device_online == 1:
         try:
+            print("working")
             r = requests.get(url)
+            return render(request,'home.html')
         except requests.exceptions.RequestException as e:
-            return render(request,'GarageControllerApp/trigger_fail.html', new_controller, url, e)
+            return render(request,'GarageControllerApp/trigger_fail.html', {'controller':[new_controller], 'url':url, 'exception':e})
     else:
         return render(request, 'GarageControllerApp/trigger_fail.html', {'controller':[new_controller],'url':url,'exception':'controller is not online'})
 

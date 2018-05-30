@@ -13,6 +13,7 @@
         <th>Controller Name</th>
         <th>Controller IP_Address</th>
         <th>Controller Active</th>
+        <th>Controller Last Online</th>
         <th>Controller Address</th>
         <th>Controller Access</th>
     </tr>
@@ -24,6 +25,7 @@
             <td>{{ controller.name }}</td>
             <td>{{ controller.ip_address }}</td>
             <td>{{ controller.device_online }}</td>
+            <td>{{ controller.last_online }}</td>
             <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
             <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Trigger!</button></td>
         </tr>
