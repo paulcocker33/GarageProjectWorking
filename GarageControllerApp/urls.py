@@ -13,5 +13,6 @@ urlpatterns = [
     path('controllers/<int:controller_id>/', views.specific_controller, name='specific_controller'),
     #device keepalive
     path('controllers/register/<str:controller_uniqueid>/', views.register_controller, name='register_controller'),
-    #
+    #user_device_query
+    path('userquery/<int:user_id>', views.user_query, name='user_query'),
 ]
