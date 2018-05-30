@@ -1,26 +1,7 @@
 <!DOCTYPE html>
-{# Load the tag library #}
-{% load bootstrap3 %}
-
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-<html lang="en">
-<head>
-    <title>Controller Page</title>
-    <style>
-        h1 {text-align: center;}
-        ul {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-<body>
+{% extends 'base.html' %}
+{% block title %}Controllers {% endblock %}
+{% block content %}
 <h1>Controller Page</h1>
 {% if latest_controller_list %}
     <table class="table table-striped">
@@ -42,23 +23,21 @@
             <td><a href="/doors/users/{{ controller.device_owner_id }}">{{ controller.device_owner.first_name }} {{ controller.device_owner.last_name }}</td>
             <td>{{ controller.name }}</td>
             <td>{{ controller.ip_address }}</td>
-            <td>{{ controller.device_Online }}</td>
+            <td>{{ controller.device_online }}</td>
             <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
-            <td><button onclick="window.location.href='http://{{ controller.ip_address }}:{{ controller.device_port }}';" target="_blank">Trigger!</button></td>
+            <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Trigger!</button></td>
         </tr>
     {% endfor %}
     </table>
     <div class="alert alert-success alert-dismissible fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong> Controllers Listed Successfully!
+    <strong>Success!</strong> Controllers Listed Successfully! <a href="/">Go Home!</a>
   </div>
 {% else %}
     <div class="alert alert-danger alert-dismissible fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Danger!</strong> No Controllers were Found!
+    <a href="/">Go Home!</a>
     </div>
 {% endif %}
-
-</body>
-</body>
-</html>
+{% endblock %}

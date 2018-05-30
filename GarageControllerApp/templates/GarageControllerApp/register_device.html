@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% block title %}
+    Register New Device{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<h1>New Controller</h1>
+    <form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="save btn btn-default">Save</button>
+        <button onclick="window.location.href='/'" class="save btn btn-default">Cancel</button>
+    </form>
+{% endblock %}

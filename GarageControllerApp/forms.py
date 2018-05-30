@@ -1,3 +1,11 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+
+from .models import Door_Controller
+
+class Controller_Form(forms.ModelForm):
+
+
+    class Meta:
+        model = Door_Controller
+        fields = ('name', 'number','street','locality','city','uniqueID','controller_type')
+

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'ipware',
     'accounts',
+    'requests',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 
 BOOTSTRAP3 = {
+    'jquery_url': '//code.jquery.com/jquery-3.3.1.slim.min.js',
     'set_required': False,  # For Django <= 1.8 only
     'error_css_class': 'bootstrap3-error',
     'required_css_class': 'bootstrap3-required',

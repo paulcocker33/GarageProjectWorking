@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}Trigger Failure{% endblock %}
+{% block content %}
+    <div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> Unable to trigger {{ controller.name }} at {{ url }} with error {{ exception }}
+    <a href="/">Go Home!</a>
+    </div>
+{% endblock %}

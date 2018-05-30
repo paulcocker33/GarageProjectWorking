@@ -24,7 +24,7 @@
     {% if user.is_authenticated %}
         Hi {{ user.first_name }} {{ user.last_name }}! <p></p>
 
-        <a href="GarageControllerApp/register_device.html">Register New Device</a><p></p> <a href="doors/controllers/{{ user.id }}">View My Devices</a>
+        <a href="doors/register/">Register New Device</a><p></p> <a href="doors/userquery/{{ user.id }}">View My Devices</a>
         <p></p>
         <p><a href="{% url 'logout' %}">Logout</a> </p>
 {% else %}
