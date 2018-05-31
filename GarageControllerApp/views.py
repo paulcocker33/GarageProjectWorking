@@ -73,7 +73,7 @@ def add_controller(request):
             new_controller.device_port = 5000
             new_controller.controller_type_id = 1
             new_controller.save()
-            return render(request,'GarageControllerApp/controllers.html', {'controller_list': [new_controller]})
+            return render(request,'GarageControllerApp/controllers.html', {'latest_controller_list': [new_controller]})
     else:
         form = Controller_Form()
         return render(request, 'GarageControllerApp/register_device.html', {'form': form})
@@ -102,14 +102,16 @@ def delete_controller(request, controller_id):
 
 @login_required
 def edit_controller(request, controller_id):
-    door_controller = Door_Controller.objects.filter(id=controller_id)
+    door_controller = Door_Controller.objects.filter(id=controller_id).first()
     if request.method == "POST":
-        form = Controller_Form(request.POST)
+        form = Controller_Form(request.POST, instance=door_controller)
         if form.is_valid():
-            door_controller.save(commit=False)
-            door_controller.device_owner = request.user
-            door_controller.save()
-            return render(request, 'GarageControllerApp/controllers.html', {'controller_list': [door_controller]})
+            edited_controller = Door_Controller()
+            edited_controller = form.save(commit=False)
+            edited_controller.device_owner = request.user
+            edited_controller.last_online = datetime.now()
+            edited_controller.save()
+            return render(request, 'GarageControllerApp/controllers.html', {'latest_controller_list': [edited_controller]})
     else:
         form = Controller_Form(instance=door_controller)
-    return render(request, 'GarageControllerApp/controllers.html', {'controller_list': [door_controller]})
+        return render(request, 'GarageControllerApp/register_device.html', {'form': form})

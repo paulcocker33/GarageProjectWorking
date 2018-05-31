@@ -29,9 +29,9 @@
             <td>{{ controller.device_online }}</td>
             <td>{{ controller.last_online }}</td>
             <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
-            <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Trigger!</button></td>
-            <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Edit</button></td>
-            <td><button onclick="window.location.href='/doors/delete_controller/{{ controller.id }}';" target="_blank">Delete</button></td>
+            <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank" class="save btn btn-default">Trigger!</button></td>
+            <td><button onclick="window.location.href='/doors/edit_controller/{{ controller.id }}';" target="_blank" class="save btn btn-default">Edit</button></td>
+            <td><button onclick="window.location.href='/doors/delete_controller/{{ controller.id }}';" target="_blank" class="save btn btn-default">Delete</button></td>
         </tr>
     {% endfor %}
     </table>
