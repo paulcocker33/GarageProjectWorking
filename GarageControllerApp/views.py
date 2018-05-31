@@ -8,31 +8,29 @@ import requests
 
 from .models import Door_Controller, Controller_Type
 
-@login_required
+
 def users(request):
     user_list = User.objects.order_by('id')
     context = {'latest_user_list': user_list}
     return render(request, 'GarageControllerApp/users.html', context)
 
-@login_required
+
 def specific_user(request, user_id):
     user_list = User.objects.filter(id=user_id)
     context = {'latest_user_list': user_list}
     return render(request, 'GarageControllerApp/users.html', context)
 
-@login_required
+
 def controllers(request):
     controller_list = Door_Controller.objects.order_by('id')
     context = {'latest_controller_list': controller_list}
     return render(request, 'GarageControllerApp/controllers.html', context)
 
-@login_required
 def specific_controller(request, controller_id):
     controller_list = Door_Controller.objects.filter(id=controller_id)
     context = {'latest_controller_list': controller_list}
     return render(request, 'GarageControllerApp/controllers.html', context)
 
-@login_required
 def register_controller(request, controller_uniqueid):
     try:
         controller = Door_Controller.objects.get(uniqueID=controller_uniqueid)
@@ -50,7 +48,6 @@ def register_controller(request, controller_uniqueid):
     context = {'latest_controller_list': [controller]}
     return render(request, 'GarageControllerApp/controllers.html', context)
 
-@login_required
 def user_query(request, user_id):
     controller_list = Door_Controller.objects.filter(device_owner=user_id)
     if controller_list.count() > 0:

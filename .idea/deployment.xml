@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="AWS_App_Server">
+  <component name="PublishConfigData" autoUpload="Always" serverName="AWS">
     <serverData>
-      <paths name="AWS_App_Server">
+      <paths name="AWS">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/ubuntu/pyproject" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/ubuntu/pyproject" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/venv" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
