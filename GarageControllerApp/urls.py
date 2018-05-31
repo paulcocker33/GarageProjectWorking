@@ -19,4 +19,8 @@ urlpatterns = [
     path('register/', views.add_controller, name='add_controller'),
     #trigger a door controller
     path('trigger_controller/<int:controller_id>', views.trigger_controller, name='trigger_controller'),
+    #delete a controller
+    path('delete_controller/<int:controller_id>', views.delete_controller, name='delete_controller'),
+    #edit a form
+    path('edit_controller/<int:controller_id>', views.edit_controller, name='edit_controller'),
 ]

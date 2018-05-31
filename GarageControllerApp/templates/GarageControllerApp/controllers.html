@@ -16,6 +16,8 @@
         <th>Controller Last Online</th>
         <th>Controller Address</th>
         <th>Controller Access</th>
+        <th>Controller Edit</th>
+        <th>Controller Delete</th>
     </tr>
     {% for controller in latest_controller_list %}
         <tr>
@@ -28,6 +30,8 @@
             <td>{{ controller.last_online }}</td>
             <td>{{ controller.number }} {{ controller.street }} {{ controller.locality }} {{ controller.city }}</td>
             <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Trigger!</button></td>
+            <td><button onclick="window.location.href='/doors/trigger_controller/{{ controller.id }}';" target="_blank">Edit</button></td>
+            <td><button onclick="window.location.href='/doors/delete_controller/{{ controller.id }}';" target="_blank">Delete</button></td>
         </tr>
     {% endfor %}
     </table>

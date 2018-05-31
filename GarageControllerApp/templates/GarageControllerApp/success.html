@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}Success{% endblock %}
+{% block content %}
+    {% if status == 'added' %}
+    <div class="alert alert-success alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Controller Registered Successfully! <a href="/">Go Home!</a>
+    </div>
+    {% endif %}
+    {% if status == 'deleted' %}
+        <div class="alert alert-success alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> Controller Deleted Successfully! <a href="/">Go Home!</a>
+    </div>
+    {% endif %}
+    {% if status == 'failed' %}
+    <div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> Something Went Wrong!
+    <a href="/">Go Home!</a>
+    </div>
+    {% endif %}
+{% endblock %}

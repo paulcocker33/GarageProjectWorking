@@ -8,24 +8,24 @@ import requests
 
 from .models import Door_Controller, Controller_Type
 
-
+@login_required
 def users(request):
     user_list = User.objects.order_by('id')
     context = {'latest_user_list': user_list}
     return render(request, 'GarageControllerApp/users.html', context)
 
-
+@login_required
 def specific_user(request, user_id):
     user_list = User.objects.filter(id=user_id)
     context = {'latest_user_list': user_list}
     return render(request, 'GarageControllerApp/users.html', context)
-
 
 def controllers(request):
     controller_list = Door_Controller.objects.order_by('id')
     context = {'latest_controller_list': controller_list}
     return render(request, 'GarageControllerApp/controllers.html', context)
 
+@login_required
 def specific_controller(request, controller_id):
     controller_list = Door_Controller.objects.filter(id=controller_id)
     context = {'latest_controller_list': controller_list}
@@ -46,8 +46,10 @@ def register_controller(request, controller_uniqueid):
     controller.last_online = datetime.now()
     controller.save()
     context = {'latest_controller_list': [controller]}
-    return render(request, 'GarageControllerApp/controllers.html', context)
+    return render(request, 'GarageControllerApp/success.html', {'status':'added'})
 
+
+@login_required
 def user_query(request, user_id):
     controller_list = Door_Controller.objects.filter(device_owner=user_id)
     if controller_list.count() > 0:
@@ -90,4 +92,24 @@ def trigger_controller(request, controller_id):
     else:
         return render(request, 'GarageControllerApp/trigger_fail.html', {'controller':[new_controller],'url':url,'exception':'controller is not online'})
 
+@login_required
+def delete_controller(request, controller_id):
+    try:
+        Door_Controller.objects.filter(id=controller_id).delete()
+        return render(request, 'GarageControllerApp/success.html', {'status': 'deleted'})
+    except Door_Controller.DoesNotExist:
+        return render(request, 'GarageControllerApp/success.html', {'status':'failed'})
 
+@login_required
+def edit_controller(request, controller_id):
+    door_controller = Door_Controller.objects.filter(id=controller_id)
+    if request.method == "POST":
+        form = Controller_Form(request.POST)
+        if form.is_valid():
+            door_controller.save(commit=False)
+            door_controller.device_owner = request.user
+            door_controller.save()
+            return render(request, 'GarageControllerApp/controllers.html', {'controller_list': [door_controller]})
+    else:
+        form = Controller_Form(instance=door_controller)
+    return render(request, 'GarageControllerApp/controllers.html', {'controller_list': [door_controller]})
